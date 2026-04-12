@@ -126,7 +126,7 @@ export default function Home() {
         </ul>
         <Link 
           to="/background"
-          className="bg-teal text-bg px-6 py-2 text-xs font-bold tracking-widest hover:bg-[#00e8cc] hover:shadow-[0_6px_24px_rgba(0,201,177,0.3)] transition-all"
+          className="bg-teal text-bg px-6 py-2 text-[10px] md:text-xs font-bold tracking-widest hover:bg-[#00e8cc] hover:shadow-[0_6px_24px_rgba(0,201,177,0.3)] transition-all"
         >
           活動背景
         </Link>
@@ -193,26 +193,15 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="flex gap-4 items-center flex-wrap justify-center"
+          className="flex gap-3 md:gap-4 items-center flex-wrap justify-center"
         >
-          {regUrl ? (
-            <a 
-              href={regUrl} 
-              target="_blank"
-              rel="noreferrer"
-              className="bg-teal text-bg px-10 py-4 text-sm font-bold tracking-widest hover:bg-[#00e8cc] hover:-translate-y-0.5 hover:shadow-[0_10px_32px_rgba(0,201,177,0.28)] transition-all"
-            >
-              了解活動背景
-            </a>
-          ) : (
-            <Link 
-              to="/background" 
-              className="bg-teal text-bg px-10 py-4 text-sm font-bold tracking-widest hover:bg-[#00e8cc] hover:-translate-y-0.5 hover:shadow-[0_10px_32px_rgba(0,201,177,0.28)] transition-all"
-            >
-              了解活動背景
-            </Link>
-          )}
-          <a href="#speakers" className="text-gray-light border-b border-white/20 py-4 text-sm tracking-widest hover:text-teal hover:border-teal hover:gap-3 flex items-center gap-2 transition-all">
+          <Link 
+            to="/background" 
+            className="bg-teal text-bg px-8 md:px-10 py-3.5 md:py-4 text-xs md:sm font-bold tracking-widest hover:bg-[#00e8cc] hover:-translate-y-0.5 hover:shadow-[0_10px_32px_rgba(0,201,177,0.28)] transition-all"
+          >
+            了解活動背景
+          </Link>
+          <a href="#speakers" className="text-gray-light border-b border-white/20 py-3.5 md:py-4 text-xs md:sm tracking-widest hover:text-teal hover:border-teal hover:gap-3 flex items-center gap-2 transition-all">
             查看講者 <ChevronRight className="w-4 h-4" />
           </a>
         </motion.div>
@@ -242,16 +231,16 @@ export default function Home() {
       </div>
 
       {/* About */}
-      <section id="about" className="py-24 px-6 md:px-12 lg:px-20">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 lg:gap-24">
+      <section id="about" className="py-16 md:py-24 px-6 md:px-12 lg:px-20">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-24">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center gap-3 font-mono text-sm text-teal tracking-[0.2em] uppercase mb-4">年會緣起</div>
-            <h2 className="font-bold text-4xl md:text-5xl lg:text-6xl leading-[1.08] mb-4">資源，是<span className="text-teal">越分享<br />越多的</span></h2>
-            <div className="pl-8 border-l-4 border-purple bg-purple/5 p-7 text-sm text-gray-light leading-relaxed mt-6">
+            <div className="flex items-center gap-3 font-mono text-xs md:text-sm text-teal tracking-[0.2em] uppercase mb-4">年會緣起</div>
+            <h2 className="font-bold text-3xl md:text-5xl lg:text-6xl leading-[1.08] mb-4">資源，是<span className="text-teal">越分享<br />越多的</span></h2>
+            <div className="pl-6 md:pl-8 border-l-4 border-purple bg-purple/5 p-5 md:p-7 text-xs md:text-sm text-gray-light leading-relaxed mt-6">
               很多人問我：忙得焦頭爛額的人，為什麼還要自找麻煩，籌辦一場幾百人的年會？<br /><br />
               我的答案很簡單：<strong className="text-teal">因為我看見了差距，而我想縮短它。</strong><br /><br />
               來到台南生活後，我發現「資訊落差」是真實存在的成本——它不只是高鐵票錢，它是時間，它是機會。<br /><br />
@@ -265,20 +254,20 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <div className="flex items-center gap-3 font-mono text-sm text-teal tracking-[0.2em] uppercase mb-4">我們的堅持</div>
-            <h2 className="font-bold text-4xl md:text-5xl lg:text-6xl leading-[1.08] mb-2">拒絕教科書，<br />只談<span className="text-teal">真槍實彈</span></h2>
-            <p className="text-xs text-gray-muted leading-relaxed mb-6">所有議程規劃從「南部企業主最需要的答案」出發，確保每場演講都是乾貨。</p>
+            <div className="flex items-center gap-3 font-mono text-xs md:text-sm text-teal tracking-[0.2em] uppercase mb-4">我們的堅持</div>
+            <h2 className="font-bold text-3xl md:text-5xl lg:text-6xl leading-[1.08] mb-2">拒絕教科書，<br />只談<span className="text-teal">真槍實彈</span></h2>
+            <p className="text-[10px] md:text-xs text-gray-muted leading-relaxed mb-6">所有議程規劃從「南部企業主最需要的答案」出發，確保每場演講都是乾貨。</p>
             <div className="flex flex-col gap-1">
               {[
                 { num: '01', title: '拒絕教科書式的理論', desc: '只談市場上真槍實彈的驗證，每一個觀點都必須有第一手市場基礎。', color: 'teal' },
                 { num: '02', title: '分享可執行路徑，而非名詞解釋', desc: '講者帶來的是第一線摸爬滾打後歸納的方法，場下可以直接套用。', color: 'purple' },
                 { num: '03', title: '每個洞見都必須落地', desc: '有案例支撐、有結論可行動，我們對演講密度和品質設有明確標準。', color: 'pink' }
               ].map((p, i) => (
-                <div key={i} className="bg-card p-6 flex gap-5 items-start border-l-2 border-transparent hover:bg-white/[0.025] transition-all" style={{ borderLeftColor: `var(--color-${p.color})` }}>
+                <div key={i} className="bg-card p-4 md:p-6 flex gap-4 md:gap-5 items-start border-l-2 border-transparent hover:bg-white/[0.025] transition-all" style={{ borderLeftColor: `var(--color-${p.color})` }}>
                   <div className="font-mono text-[9px] text-gray-muted min-w-[20px] pt-1 tracking-widest">{p.num}</div>
                   <div>
-                    <div className="text-sm font-bold mb-1">{p.title}</div>
-                    <div className="text-xs text-gray-muted leading-relaxed">{p.desc}</div>
+                    <div className="text-xs md:text-sm font-bold mb-1">{p.title}</div>
+                    <div className="text-[10px] md:text-xs text-gray-muted leading-relaxed">{p.desc}</div>
                   </div>
                 </div>
               ))}
@@ -432,23 +421,12 @@ export default function Home() {
               <div key={i} className="font-mono text-[10px] text-teal border border-teal/20 px-3.5 py-1.5 bg-teal/5 tracking-wider">{p}</div>
             ))}
           </div>
-          {regUrl ? (
-            <a 
-              href={regUrl} 
-              target="_blank"
-              rel="noreferrer"
-              className="bg-teal text-bg px-16 py-4 text-sm font-bold tracking-[0.16em] hover:bg-[#00e8cc] hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(0,201,177,0.3)] transition-all"
-            >
-              深入了解活動背景
-            </a>
-          ) : (
-            <Link 
-              to="/background" 
-              className="bg-teal text-bg px-16 py-4 text-sm font-bold tracking-[0.16em] hover:bg-[#00e8cc] hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(0,201,177,0.3)] transition-all"
-            >
-              深入了解活動背景
-            </Link>
-          )}
+          <Link 
+            to="/background" 
+            className="bg-teal text-bg px-12 md:px-16 py-3.5 md:py-4 text-xs md:sm font-bold tracking-[0.16em] hover:bg-[#00e8cc] hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(0,201,177,0.3)] transition-all"
+          >
+            深入了解活動背景
+          </Link>
         </div>
       </section>
 
