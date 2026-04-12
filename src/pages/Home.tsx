@@ -5,6 +5,9 @@ import { ChevronRight } from 'lucide-react';
 import BackgroundCanvas from '../components/BackgroundCanvas';
 import { cn } from '../lib/utils';
 
+// 在此處填入您的 Google Sheet CSV 網址
+const GOOGLE_SHEET_CSV_URL = ''; 
+
 interface Speaker {
   name: string;
   title?: string;
@@ -92,8 +95,12 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (sheetUrl) fetchSpeakers(sheetUrl);
-  }, []);
+    if (GOOGLE_SHEET_CSV_URL) {
+      fetchSpeakers(GOOGLE_SHEET_CSV_URL);
+    } else if (sheetUrl) {
+      fetchSpeakers(sheetUrl);
+    }
+  }, [sheetUrl]);
 
   return (
     <div className="min-h-screen">
