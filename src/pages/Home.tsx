@@ -125,7 +125,7 @@ export default function Home() {
           ))}
         </ul>
         <a 
-          href={regUrl || "/register"} 
+          href={regUrl || "#/background"} 
           target={regUrl ? "_blank" : undefined}
           rel="noreferrer"
           className="bg-teal text-bg px-6 py-2 text-xs font-bold tracking-widest hover:bg-[#00e8cc] hover:shadow-[0_6px_24px_rgba(0,201,177,0.3)] transition-all"
@@ -197,14 +197,23 @@ export default function Home() {
           transition={{ delay: 0.4 }}
           className="flex gap-4 items-center flex-wrap justify-center"
         >
-          <a 
-            href={regUrl || "/register"} 
-            target={regUrl ? "_blank" : undefined}
-            rel="noreferrer"
-            className="bg-teal text-bg px-10 py-4 text-sm font-bold tracking-widest hover:bg-[#00e8cc] hover:-translate-y-0.5 hover:shadow-[0_10px_32px_rgba(0,201,177,0.28)] transition-all"
-          >
-            了解活動背景
-          </a>
+          {regUrl ? (
+            <a 
+              href={regUrl} 
+              target="_blank"
+              rel="noreferrer"
+              className="bg-teal text-bg px-10 py-4 text-sm font-bold tracking-widest hover:bg-[#00e8cc] hover:-translate-y-0.5 hover:shadow-[0_10px_32px_rgba(0,201,177,0.28)] transition-all"
+            >
+              了解活動背景
+            </a>
+          ) : (
+            <Link 
+              to="/background" 
+              className="bg-teal text-bg px-10 py-4 text-sm font-bold tracking-widest hover:bg-[#00e8cc] hover:-translate-y-0.5 hover:shadow-[0_10px_32px_rgba(0,201,177,0.28)] transition-all"
+            >
+              了解活動背景
+            </Link>
+          )}
           <a href="#speakers" className="text-gray-light border-b border-white/20 py-4 text-sm tracking-widest hover:text-teal hover:border-teal hover:gap-3 flex items-center gap-2 transition-all">
             查看講者 <ChevronRight className="w-4 h-4" />
           </a>
@@ -417,14 +426,23 @@ export default function Home() {
               <div key={i} className="font-mono text-[10px] text-teal border border-teal/20 px-3.5 py-1.5 bg-teal/5 tracking-wider">{p}</div>
             ))}
           </div>
-          <a 
-            href={regUrl || "/register"} 
-            target={regUrl ? "_blank" : undefined}
-            rel="noreferrer"
-            className="bg-teal text-bg px-16 py-4 text-sm font-bold tracking-[0.16em] hover:bg-[#00e8cc] hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(0,201,177,0.3)] transition-all"
-          >
-            深入了解活動背景
-          </a>
+          {regUrl ? (
+            <a 
+              href={regUrl} 
+              target="_blank"
+              rel="noreferrer"
+              className="bg-teal text-bg px-16 py-4 text-sm font-bold tracking-[0.16em] hover:bg-[#00e8cc] hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(0,201,177,0.3)] transition-all"
+            >
+              深入了解活動背景
+            </a>
+          ) : (
+            <Link 
+              to="/background" 
+              className="bg-teal text-bg px-16 py-4 text-sm font-bold tracking-[0.16em] hover:bg-[#00e8cc] hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(0,201,177,0.3)] transition-all"
+            >
+              深入了解活動背景
+            </Link>
+          )}
         </div>
       </section>
 
