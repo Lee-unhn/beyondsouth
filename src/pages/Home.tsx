@@ -333,47 +333,60 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-1">
-            <div className="hidden lg:grid lg:grid-cols-[100px_140px_1fr_160px] gap-4 px-8 py-3 bg-purple/10">
-              {['時間', '類型', '內容', '備註'].map((h, i) => (
-                <div key={i} className={cn("text-[10px] font-mono text-teal tracking-[0.2em] uppercase font-bold", i === 3 && "text-right")}>{h}</div>
+          <div className="flex flex-col gap-2">
+            {/* Desktop Header - Only visible on XL screens */}
+            <div className="hidden xl:grid xl:grid-cols-[120px_140px_1fr] gap-6 px-10 py-4 bg-purple/10 border-b border-white/5">
+              {['時間', '類型', '內容'].map((h, i) => (
+                <div key={i} className="text-[11px] font-mono text-teal tracking-[0.25em] uppercase font-bold">{h}</div>
               ))}
             </div>
+
             {[
-              { t: '09:00', type: '報到', title: '開放報到、茶敘交流', note: '場地開放', style: 'adm' },
-              { t: '10:00', type: '開幕', title: '開幕致詞 ／ 年會定位說明', note: '主辦單位', style: 'adm' },
-              { t: '10:10', type: '主題演講', title: 'Session 1｜產業轉型實戰', note: '45 min + Q&A', style: 'talk' },
-              { t: '11:10', type: '主題演講', title: 'Session 2｜全通路零售佈局', note: '45 min + Q&A', style: 'talk' },
-              { t: '12:10', type: '休息', title: '午餐休息', note: '90 分鐘', style: 'brk' },
-              { t: '13:40', type: '主題演講', title: 'Session 3｜品牌國際化策略', note: '45 min + Q&A', style: 'talk' },
-              { t: '14:40', type: '主題演講', title: 'Session 4｜CRM 驅動增長', note: '45 min + Q&A', style: 'talk' },
-              { t: '15:30', type: '休息', title: '中場休息、茶點', note: '15 分鐘', style: 'brk' },
-              { t: '15:45', type: '主題演講', title: 'Session 5｜企業 AI 發展方向', note: '45 min + Q&A', style: 'talk' },
-              { t: '16:45', type: '主題演講', title: 'Session 6｜南部產業機會 × 挑戰', note: '45 min + Q&A', style: 'talk' },
-              { t: '17:00', type: '交流', title: '散場 ／ 現場自由交流開始', note: '非強制留場', style: 'net' },
-              { t: '18:00', type: '交流', title: '活動圓滿落幕', note: '', style: 'net' }
+              { t: '09:00', type: '報到', title: '開放報到、茶敘交流', style: 'adm' },
+              { t: '10:00', type: '開幕', title: '開幕致詞 ／ 年會定位說明', style: 'adm' },
+              { t: '10:10', type: '主題演講', title: 'Session 1｜產業轉型實戰：從 0 到 1 的數位化路徑', style: 'talk' },
+              { t: '11:10', type: '主題演講', title: 'Session 2｜全通路零售佈局：打破線上線下的疆界', style: 'talk' },
+              { t: '12:10', type: '休息', title: '午餐休息（90 分鐘）', style: 'brk' },
+              { t: '13:40', type: '主題演講', title: 'Session 3｜品牌國際化策略：台灣品牌如何走向東南亞', style: 'talk' },
+              { t: '14:40', type: '主題演講', title: 'Session 4｜CRM 驅動增長：高價值顧客的留存藝術', style: 'talk' },
+              { t: '15:30', type: '休息', title: '中場休息、茶點（15 分鐘）', style: 'brk' },
+              { t: '15:45', type: '主題演講', title: 'Session 5｜企業 AI 發展方向：生成式 AI 的落地應用', style: 'talk' },
+              { t: '16:45', type: '主題演講', title: 'Session 6｜南部產業機會 × 挑戰：下一個十年的增長點', style: 'talk' },
+              { t: '17:00', type: '交流', title: '散場 ／ 現場自由交流開始', style: 'net' },
+              { t: '18:00', type: '交流', title: '活動圓滿落幕', style: 'net' }
             ].map((row, i) => (
               <div key={i} className={cn(
-                "flex flex-col lg:grid lg:grid-cols-[100px_140px_1fr_160px] gap-3 lg:gap-4 px-6 lg:px-8 py-5 lg:py-4 bg-card border-l-[3px] items-start lg:items-center transition-all hover:bg-white/[0.025] hover:translate-x-1",
+                "group flex flex-col xl:grid xl:grid-cols-[120px_140px_1fr] gap-4 xl:gap-6 px-6 md:px-10 py-6 xl:py-5 bg-card border-l-[4px] transition-all hover:bg-white/[0.03] hover:translate-x-1",
                 row.style === 'talk' ? "border-purple" : row.style === 'net' ? "border-teal" : "border-white/10"
               )}>
-                <div className="flex items-center justify-between w-full lg:w-auto">
-                  <div className={cn("font-mono text-sm lg:text-base font-bold", (row.style === 'adm' || row.style === 'brk') ? "text-gray-muted" : "text-teal")}>{row.t}</div>
-                  <div className="lg:hidden">
+                {/* Mobile: Time & Type Row */}
+                <div className="flex items-center justify-between xl:justify-start xl:contents">
+                  <div className={cn(
+                    "font-mono text-sm md:text-base font-bold tracking-tight",
+                    (row.style === 'adm' || row.style === 'brk') ? "text-gray-muted" : "text-teal"
+                  )}>
+                    {row.t}
+                  </div>
+                  
+                  <div className="xl:block">
                     <span className={cn(
-                      "inline-block px-2.5 py-1 text-[10px] font-mono font-bold tracking-wider",
-                      row.style === 'talk' ? "bg-purple/20 text-purple" : row.style === 'net' ? "bg-teal/15 text-teal" : "bg-white/5 text-gray-muted"
-                    )}>{row.type}</span>
+                      "inline-block px-3 py-1 text-[10px] font-mono font-bold tracking-widest uppercase",
+                      row.style === 'talk' ? "bg-purple/20 text-purple border border-purple/20" : 
+                      row.style === 'net' ? "bg-teal/15 text-teal border border-teal/20" : 
+                      "bg-white/5 text-gray-muted border border-white/10"
+                    )}>
+                      {row.type}
+                    </span>
                   </div>
                 </div>
-                <div className="hidden lg:block">
-                  <span className={cn(
-                    "inline-block px-2.5 py-1 text-[10px] font-mono font-bold tracking-wider",
-                    row.style === 'talk' ? "bg-purple/20 text-purple" : row.style === 'net' ? "bg-teal/15 text-teal" : "bg-white/5 text-gray-muted"
-                  )}>{row.type}</span>
+
+                {/* Content Title - Full width on mobile */}
+                <div className={cn(
+                  "text-lg md:text-xl xl:text-base font-bold xl:font-semibold leading-snug",
+                  (row.style === 'adm' || row.style === 'brk') ? "text-gray-muted font-normal" : "text-white group-hover:text-teal transition-colors"
+                )}>
+                  {row.title}
                 </div>
-                <div className={cn("text-base lg:text-sm font-bold lg:font-semibold w-full", (row.style === 'adm' || row.style === 'brk') ? "text-gray-muted font-normal" : "text-white")}>{row.title}</div>
-                <div className="text-xs lg:text-[11px] text-gray-muted font-mono lg:text-right w-full lg:w-auto mt-1 lg:mt-0">{row.note}</div>
               </div>
             ))}
           </div>
