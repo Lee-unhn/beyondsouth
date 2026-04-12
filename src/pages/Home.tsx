@@ -334,14 +334,14 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <div className="hidden md:grid grid-cols-[80px_120px_1fr_140px] gap-3 px-6 py-2.5 bg-purple/10">
+            <div className="hidden lg:grid lg:grid-cols-[100px_140px_1fr_160px] gap-4 px-8 py-3 bg-purple/10">
               {['時間', '類型', '內容', '備註'].map((h, i) => (
-                <div key={i} className={cn("text-[9px] font-mono text-teal tracking-[0.15em] uppercase", i === 3 && "text-right")}>{h}</div>
+                <div key={i} className={cn("text-[10px] font-mono text-teal tracking-[0.2em] uppercase font-bold", i === 3 && "text-right")}>{h}</div>
               ))}
             </div>
             {[
               { t: '09:00', type: '報到', title: '開放報到、茶敘交流', note: '場地開放', style: 'adm' },
-              { t: '10:00', type: '開幕', title: '開幕致詞 ／ 年會定位說明', note: '主辦方', style: 'adm' },
+              { t: '10:00', type: '開幕', title: '開幕致詞 ／ 年會定位說明', note: '主辦單位', style: 'adm' },
               { t: '10:10', type: '主題演講', title: 'Session 1｜產業轉型實戰', note: '45 min + Q&A', style: 'talk' },
               { t: '11:10', type: '主題演講', title: 'Session 2｜全通路零售佈局', note: '45 min + Q&A', style: 'talk' },
               { t: '12:10', type: '休息', title: '午餐休息', note: '90 分鐘', style: 'brk' },
@@ -354,26 +354,26 @@ export default function Home() {
               { t: '18:00', type: '交流', title: '活動圓滿落幕', note: '', style: 'net' }
             ].map((row, i) => (
               <div key={i} className={cn(
-                "flex flex-col md:grid md:grid-cols-[80px_120px_1fr_140px] gap-2 md:gap-3 px-6 py-4 md:py-3.5 bg-card border-l-[3px] items-start md:items-center transition-all hover:bg-white/[0.022] hover:translate-x-1",
+                "flex flex-col lg:grid lg:grid-cols-[100px_140px_1fr_160px] gap-3 lg:gap-4 px-6 lg:px-8 py-5 lg:py-4 bg-card border-l-[3px] items-start lg:items-center transition-all hover:bg-white/[0.025] hover:translate-x-1",
                 row.style === 'talk' ? "border-purple" : row.style === 'net' ? "border-teal" : "border-white/10"
               )}>
-                <div className="flex items-center justify-between w-full md:w-auto">
-                  <div className={cn("font-mono text-xs font-bold", (row.style === 'adm' || row.style === 'brk') ? "text-gray-muted" : "text-teal")}>{row.t}</div>
-                  <div className="md:hidden">
+                <div className="flex items-center justify-between w-full lg:w-auto">
+                  <div className={cn("font-mono text-sm lg:text-base font-bold", (row.style === 'adm' || row.style === 'brk') ? "text-gray-muted" : "text-teal")}>{row.t}</div>
+                  <div className="lg:hidden">
                     <span className={cn(
-                      "inline-block px-2 py-0.5 text-[9px] font-mono font-bold tracking-wider",
+                      "inline-block px-2.5 py-1 text-[10px] font-mono font-bold tracking-wider",
                       row.style === 'talk' ? "bg-purple/20 text-purple" : row.style === 'net' ? "bg-teal/15 text-teal" : "bg-white/5 text-gray-muted"
                     )}>{row.type}</span>
                   </div>
                 </div>
-                <div className="hidden md:block">
+                <div className="hidden lg:block">
                   <span className={cn(
-                    "inline-block px-2 py-0.5 text-[9px] font-mono font-bold tracking-wider",
+                    "inline-block px-2.5 py-1 text-[10px] font-mono font-bold tracking-wider",
                     row.style === 'talk' ? "bg-purple/20 text-purple" : row.style === 'net' ? "bg-teal/15 text-teal" : "bg-white/5 text-gray-muted"
                   )}>{row.type}</span>
                 </div>
-                <div className={cn("text-sm font-semibold", (row.style === 'adm' || row.style === 'brk') ? "text-gray-muted font-normal" : "text-white")}>{row.title}</div>
-                <div className="text-[11px] text-gray-muted font-mono md:text-right w-full md:w-auto">{row.note}</div>
+                <div className={cn("text-base lg:text-sm font-bold lg:font-semibold w-full", (row.style === 'adm' || row.style === 'brk') ? "text-gray-muted font-normal" : "text-white")}>{row.title}</div>
+                <div className="text-xs lg:text-[11px] text-gray-muted font-mono lg:text-right w-full lg:w-auto mt-1 lg:mt-0">{row.note}</div>
               </div>
             ))}
           </div>
