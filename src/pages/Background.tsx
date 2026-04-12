@@ -143,6 +143,15 @@ export default function Background() {
           <div className="bg-card border-l-[3px] border-purple p-7 md:p-8">
             <p className="text-sm text-gray-light leading-relaxed">三者缺一，學習效益都會大打折扣。<strong>Beyond South 南向無界的整體設計，就是以這三個條件為核心構建的</strong>——把最需要的東西，帶到最需要它的地方。</p>
           </div>
+
+          <div className="mt-20 text-center">
+            <Link 
+              to="/register" 
+              className="inline-block bg-teal text-bg px-12 md:px-16 py-4 text-sm font-bold tracking-[0.16em] hover:bg-[#00e8cc] hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(0,201,177,0.3)] transition-all"
+            >
+              立即報名年會
+            </Link>
+          </div>
         </div>
       </section>
 
