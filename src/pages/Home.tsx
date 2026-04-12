@@ -124,14 +124,12 @@ export default function Home() {
             </li>
           ))}
         </ul>
-        <a 
-          href={regUrl || "#/background"} 
-          target={regUrl ? "_blank" : undefined}
-          rel="noreferrer"
+        <Link 
+          to="/background"
           className="bg-teal text-bg px-6 py-2 text-xs font-bold tracking-widest hover:bg-[#00e8cc] hover:shadow-[0_6px_24px_rgba(0,201,177,0.3)] transition-all"
         >
           活動背景
-        </a>
+        </Link>
       </nav>
 
       {/* Hero */}
@@ -346,8 +344,8 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-0.5">
-            <div className="grid grid-cols-[80px_120px_1fr_140px] gap-3 px-6 py-2.5 bg-purple/10">
+          <div className="flex flex-col gap-1">
+            <div className="hidden md:grid grid-cols-[80px_120px_1fr_140px] gap-3 px-6 py-2.5 bg-purple/10">
               {['時間', '類型', '內容', '備註'].map((h, i) => (
                 <div key={i} className={cn("text-[9px] font-mono text-teal tracking-[0.15em] uppercase", i === 3 && "text-right")}>{h}</div>
               ))}
@@ -367,18 +365,26 @@ export default function Home() {
               { t: '18:00', type: '交流', title: '活動圓滿落幕', note: '', style: 'net' }
             ].map((row, i) => (
               <div key={i} className={cn(
-                "grid grid-cols-[80px_120px_1fr_140px] gap-3 px-6 py-3.5 bg-card border-l-[3px] items-center transition-all hover:bg-white/[0.022] hover:translate-x-1",
+                "flex flex-col md:grid md:grid-cols-[80px_120px_1fr_140px] gap-2 md:gap-3 px-6 py-4 md:py-3.5 bg-card border-l-[3px] items-start md:items-center transition-all hover:bg-white/[0.022] hover:translate-x-1",
                 row.style === 'talk' ? "border-purple" : row.style === 'net' ? "border-teal" : "border-white/10"
               )}>
-                <div className={cn("font-mono text-xs font-bold", (row.style === 'adm' || row.style === 'brk') ? "text-gray-muted" : "text-teal")}>{row.t}</div>
-                <div>
+                <div className="flex items-center justify-between w-full md:w-auto">
+                  <div className={cn("font-mono text-xs font-bold", (row.style === 'adm' || row.style === 'brk') ? "text-gray-muted" : "text-teal")}>{row.t}</div>
+                  <div className="md:hidden">
+                    <span className={cn(
+                      "inline-block px-2 py-0.5 text-[9px] font-mono font-bold tracking-wider",
+                      row.style === 'talk' ? "bg-purple/20 text-purple" : row.style === 'net' ? "bg-teal/15 text-teal" : "bg-white/5 text-gray-muted"
+                    )}>{row.type}</span>
+                  </div>
+                </div>
+                <div className="hidden md:block">
                   <span className={cn(
                     "inline-block px-2 py-0.5 text-[9px] font-mono font-bold tracking-wider",
                     row.style === 'talk' ? "bg-purple/20 text-purple" : row.style === 'net' ? "bg-teal/15 text-teal" : "bg-white/5 text-gray-muted"
                   )}>{row.type}</span>
                 </div>
                 <div className={cn("text-sm font-semibold", (row.style === 'adm' || row.style === 'brk') ? "text-gray-muted font-normal" : "text-white")}>{row.title}</div>
-                <div className="text-[11px] text-gray-muted font-mono text-right">{row.note}</div>
+                <div className="text-[11px] text-gray-muted font-mono md:text-right w-full md:w-auto">{row.note}</div>
               </div>
             ))}
           </div>
