@@ -118,9 +118,18 @@ export default function Home() {
         <ul className="hidden md:flex gap-8 list-none">
           {['about', 'speakers', 'agenda', 'sessions'].map((item) => (
             <li key={item}>
-              <a href={`#${item}`} className="text-gray-muted hover:text-teal text-sm tracking-wider transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-px after:bg-teal after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left">
+              <Link 
+                to={`/#${item}`} 
+                onClick={(e) => {
+                  if (window.location.pathname === '/' || window.location.hash === '' || window.location.hash === '#/') {
+                    e.preventDefault();
+                    document.getElementById(item)?.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="text-gray-muted hover:text-teal text-sm tracking-wider transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-px after:bg-teal after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left"
+              >
                 {item === 'about' ? '緣起' : item === 'speakers' ? '講者' : item === 'agenda' ? '議程' : '主題'}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -201,9 +210,18 @@ export default function Home() {
           >
             了解活動背景
           </Link>
-          <a href="#speakers" className="text-gray-light border-b border-white/20 py-3.5 md:py-4 text-xs md:sm tracking-widest hover:text-teal hover:border-teal hover:gap-3 flex items-center gap-2 transition-all">
+          <Link 
+            to="/#speakers" 
+            onClick={(e) => {
+              if (window.location.pathname === '/' || window.location.hash === '' || window.location.hash === '#/') {
+                e.preventDefault();
+                document.getElementById('speakers')?.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="text-gray-light border-b border-white/20 py-3.5 md:py-4 text-xs md:sm tracking-widest hover:text-teal hover:border-teal hover:gap-3 flex items-center gap-2 transition-all"
+          >
             查看講者 <ChevronRight className="w-4 h-4" />
-          </a>
+          </Link>
         </motion.div>
 
         <div className="absolute bottom-9 left-6 md:left-12 lg:left-20 flex items-center gap-3 font-mono text-[9px] text-white/20 tracking-widest animate-pulse">
@@ -356,7 +374,7 @@ export default function Home() {
               { t: '18:00', type: '交流', title: '活動圓滿落幕', style: 'net' }
             ].map((row, i) => (
               <div key={i} className={cn(
-                "group flex flex-col xl:grid xl:grid-cols-[120px_140px_1fr] gap-4 xl:gap-6 px-6 md:px-10 py-6 xl:py-5 bg-card border-l-[4px] transition-all hover:bg-white/[0.03] hover:translate-x-1",
+                "group flex flex-col xl:grid xl:grid-cols-[120px_140px_1fr] gap-3 xl:gap-6 px-4 md:px-10 py-5 xl:py-5 bg-card border-l-[4px] transition-all hover:bg-white/[0.03] hover:translate-x-1",
                 row.style === 'talk' ? "border-purple" : row.style === 'net' ? "border-teal" : "border-white/10"
               )}>
                 {/* Mobile: Time & Type Row */}
@@ -370,7 +388,7 @@ export default function Home() {
                   
                   <div className="xl:block">
                     <span className={cn(
-                      "inline-block px-3 py-1 text-[10px] font-mono font-bold tracking-widest uppercase",
+                      "inline-block px-2.5 py-0.5 text-[9px] md:text-[10px] font-mono font-bold tracking-widest uppercase",
                       row.style === 'talk' ? "bg-purple/20 text-purple border border-purple/20" : 
                       row.style === 'net' ? "bg-teal/15 text-teal border border-teal/20" : 
                       "bg-white/5 text-gray-muted border border-white/10"
@@ -382,7 +400,7 @@ export default function Home() {
 
                 {/* Content Title - Full width on mobile */}
                 <div className={cn(
-                  "text-lg md:text-xl xl:text-base font-bold xl:font-semibold leading-snug",
+                  "text-base md:text-lg xl:text-base font-bold xl:font-semibold leading-snug",
                   (row.style === 'adm' || row.style === 'brk') ? "text-gray-muted font-normal" : "text-white group-hover:text-teal transition-colors"
                 )}>
                   {row.title}
