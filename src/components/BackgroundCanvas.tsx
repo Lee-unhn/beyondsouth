@@ -1,3 +1,7 @@
+/**
+ * Background Canvas Component - Beyond South 2026
+ * Optimized: 2026
+ */
 import { useEffect, useRef } from 'react';
 
 export default function BackgroundCanvas() {

@@ -1,3 +1,7 @@
+/**
+ * Home Page - Beyond South 2026
+ * Refreshed: 2026-04-13
+ */
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
@@ -352,8 +356,8 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col gap-2">
-            {/* Desktop Header - Only visible on XL screens */}
-            <div className="hidden xl:grid xl:grid-cols-[120px_140px_1fr] gap-6 px-10 py-4 bg-purple/10 border-b border-white/5">
+            {/* Desktop Header - Visible on MD screens and above */}
+            <div className="hidden md:grid md:grid-cols-[100px_120px_1fr] gap-6 px-6 md:px-10 py-4 bg-purple/10 border-b border-white/5">
               {['時間', '類型', '內容'].map((h, i) => (
                 <div key={i} className="text-[11px] font-mono text-teal tracking-[0.25em] uppercase font-bold">{h}</div>
               ))}
@@ -374,11 +378,11 @@ export default function Home() {
               { t: '18:00', type: '交流', title: '活動圓滿落幕', style: 'net' }
             ].map((row, i) => (
               <div key={i} className={cn(
-                "group flex flex-col xl:grid xl:grid-cols-[120px_140px_1fr] gap-3 xl:gap-6 px-4 md:px-10 py-5 xl:py-5 bg-card border-l-[4px] transition-all hover:bg-white/[0.03] hover:translate-x-1",
+                "group flex flex-col md:grid md:grid-cols-[100px_120px_1fr] gap-3 md:gap-6 px-4 md:px-10 py-5 bg-card border-l-[4px] transition-all hover:bg-white/[0.03] hover:translate-x-1",
                 row.style === 'talk' ? "border-purple" : row.style === 'net' ? "border-teal" : "border-white/10"
               )}>
                 {/* Mobile: Time & Type Row */}
-                <div className="flex items-center justify-between xl:justify-start xl:contents">
+                <div className="flex items-center justify-between md:justify-start md:contents">
                   <div className={cn(
                     "font-mono text-sm md:text-base font-bold tracking-tight",
                     (row.style === 'adm' || row.style === 'brk') ? "text-gray-muted" : "text-teal"
@@ -386,7 +390,7 @@ export default function Home() {
                     {row.t}
                   </div>
                   
-                  <div className="xl:block">
+                  <div className="md:block">
                     <span className={cn(
                       "inline-block px-2.5 py-0.5 text-[9px] md:text-[10px] font-mono font-bold tracking-widest uppercase",
                       row.style === 'talk' ? "bg-purple/20 text-purple border border-purple/20" : 
@@ -400,7 +404,7 @@ export default function Home() {
 
                 {/* Content Title - Full width on mobile */}
                 <div className={cn(
-                  "text-base md:text-lg xl:text-base font-bold xl:font-semibold leading-snug",
+                  "text-base md:text-lg font-bold md:font-semibold leading-snug",
                   (row.style === 'adm' || row.style === 'brk') ? "text-gray-muted font-normal" : "text-white group-hover:text-teal transition-colors"
                 )}>
                   {row.title}

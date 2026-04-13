@@ -1,3 +1,7 @@
+/**
+ * Main Entry Point - Beyond South 2026
+ * Initialized: 2026
+ */
 import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
 import App from './App.tsx';

@@ -1,3 +1,7 @@
+/**
+ * Background Page - Beyond South 2026
+ * Refreshed: 2026-04-13
+ */
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import BackgroundCanvas from '../components/BackgroundCanvas';
