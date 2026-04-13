@@ -1,0 +1,30 @@
+/* Global Styles - Beyond South 2026 */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Noto Sans TC", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "Space Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-bg: #080812;
+  --color-bg-alt: #0d0d1f;
+  --color-card: #10102a;
+  --color-teal: #00c9b1;
+  --color-purple: #7b4fd9;
+  --color-pink: #d94faa;
+  --color-gray-muted: #8888aa;
+  --color-gray-light: #b8b8cc;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-white font-sans overflow-x-hidden;
+  }
+}
+
+@layer utilities {
+  .text-gradient-teal {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-teal to-teal/70;
+  }
+}
