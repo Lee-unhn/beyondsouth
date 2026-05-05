@@ -323,7 +323,7 @@ export default function Home() {
                 >
                   <div className="h-[210px] relative overflow-hidden bg-[#0f0f28] flex items-center justify-center">
                     {s.photo ? (
-                      <img src={s.photo} alt={s.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                      <img src={s.photo} alt={s.name} className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
                     ) : (
                       <div className="w-20 h-20 rounded-full bg-purple/15 border border-purple/20 flex items-center justify-center text-3xl">👤</div>
                     )}
