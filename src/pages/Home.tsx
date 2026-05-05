@@ -9,8 +9,16 @@ import { ChevronRight } from 'lucide-react';
 import BackgroundCanvas from '../components/BackgroundCanvas';
 import { cn } from '../lib/utils';
 
-// 在此處填入您的 Google Sheet CSV 網址
-const GOOGLE_SHEET_CSV_URL = ''; 
+// Google Sheet 講者資料來源（CSV 匯出端點，需 Sheet 設為「知道連結的人皆可檢視」）
+const GOOGLE_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1L2A-AzOYDw5KVPIYtQcOcZ3i-DY2m2otlCIP6eH_95w/export?format=csv&gid=0';
+
+// 自動把常見 Google Drive 分享連結轉成可直接 <img src> 使用的 URL。
+// 支援 /file/d/FILE_ID/... 或 ?id=FILE_ID 兩種格式。
+function normalizePhoto(url: string): string {
+  if (!url) return '';
+  const m = url.match(/(?:\/d\/|[?&]id=)([\w-]{20,})/);
+  return m ? `https://lh3.googleusercontent.com/d/${m[1]}=w400` : url;
+}
 
 interface Speaker {
   name: string;
@@ -28,8 +36,10 @@ interface Speaker {
 
 export default function Home() {
   const [isNavSmall, setIsNavSmall] = useState(false);
-  const [sheetUrl] = useState(localStorage.getItem('bs26_sheet_url') || '');
-  const [regUrl] = useState(localStorage.getItem('bs26_reg_url') || '');
+  const [sheetUrl] = useState(() => {
+    try { return localStorage.getItem('bs26_sheet_url') || ''; }
+    catch { return ''; }
+  });
   const [speakers, setSpeakers] = useState<Speaker[]>([]);
   const [isLoadingSpeakers, setIsLoadingSpeakers] = useState(false);
   const [speakerStatus, setSpeakerStatus] = useState<{ type: 'ok' | 'err'; msg: string } | null>(null);
@@ -71,7 +81,7 @@ export default function Home() {
     if (!url) return;
     setIsLoadingSpeakers(true);
     try {
-      const res = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`);
+      const res = await fetch(url);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const text = await res.text();
       const lines = text.trim().split('\n');
@@ -91,6 +101,7 @@ export default function Home() {
         fields.push(cur.trim());
         const obj: any = {};
         headers.forEach((h, i) => obj[h] = (fields[i] || '').replace(/^"|"$/g, '').trim());
+        if (obj.photo) obj.photo = normalizePhoto(obj.photo);
         return obj as Speaker;
       }).filter(s => s.name);
       setSpeakers(data);
@@ -292,7 +303,7 @@ export default function Home() {
       </section>
 
       {/* Speakers */}
-      <section id="speakers" className="py-24 px-6 md:px-12 lg:px-20 bg-bg-alt">
+      <section id="speakers" className="py-24 px-6 md:px-12 lg:px-20 bg-[#0d0d1f]/50 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap justify-between items-end gap-4 mb-12">
             <h2 className="font-bold text-4xl md:text-5xl lg:text-6xl leading-[1.08]">講者<span className="text-teal">陣容</span></h2>
@@ -340,9 +351,26 @@ export default function Home() {
                 </motion.div>
               ))
             ) : (
-              <div className="col-span-full py-20 text-center text-sm text-gray-muted leading-loose">
-                講者陣容即將公佈<br /><span className="text-teal">敬請期待 — 持續更新中</span>
-              </div>
+              Array.from({ length: 8 }).map((_, i) => (
+                <div
+                  key={i}
+                  className={cn(
+                    "bg-card overflow-hidden",
+                    isLoadingSpeakers && "animate-pulse"
+                  )}
+                >
+                  <div className="h-[210px] bg-[#0f0f28] flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-purple/10 border border-purple/15 flex items-center justify-center text-2xl text-white/20">👤</div>
+                  </div>
+                  <div className={cn("h-0.5", i % 3 === 0 ? "bg-teal/30" : i % 3 === 1 ? "bg-purple/30" : "bg-pink/30")} />
+                  <div className="p-5 flex flex-col gap-2">
+                    <div className="h-4 w-2/3 bg-white/[0.04] rounded-sm" />
+                    <div className="h-3 w-1/2 bg-teal/10 rounded-sm" />
+                    <div className="h-3 w-1/3 bg-white/[0.03] rounded-sm" />
+                    <div className="text-[10px] text-gray-muted/60 mt-1 tracking-wider">即將公佈 · Coming Soon</div>
+                  </div>
+                </div>
+              ))
             )}
           </div>
         </div>

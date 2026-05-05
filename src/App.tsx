@@ -14,6 +14,7 @@ import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-d
 import Home from './pages/Home';
 import Background from './pages/Background';
 import Register from './pages/Register';
+import FloatingCTA from './components/FloatingCTA';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -32,6 +33,7 @@ export default function App() {
         <Route path="/background" element={<Background />} />
         <Route path="/register" element={<Register />} />
       </Routes>
+      <FloatingCTA />
     </Router>
   );
 }

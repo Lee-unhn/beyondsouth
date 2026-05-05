@@ -149,12 +149,14 @@ export default function Background() {
           </div>
 
           <div className="mt-20 text-center">
-            <Link 
-              to="/register" 
+            <a
+              href="https://www.accupass.com/event/2605040805401337286380"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block bg-teal text-bg px-12 md:px-16 py-4 text-sm font-bold tracking-[0.16em] hover:bg-[#00e8cc] hover:-translate-y-1 hover:shadow-[0_14px_40px_rgba(0,201,177,0.3)] transition-all"
             >
               立即報名年會
-            </Link>
+            </a>
           </div>
         </div>
       </section>

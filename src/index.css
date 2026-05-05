@@ -28,3 +28,15 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-teal to-teal/70;
   }
 }
+
+/*
+ * Workaround: motion v12 + React 19 production build doesn't advance from
+ * `initial` to `animate` state, leaving elements stuck at opacity:0.
+ * Force-show any element that motion has parked in the initial hidden state.
+ * Selector targets motion's exact inline-style pattern (opacity:0 + transform matrix)
+ * to avoid clobbering legitimate hidden elements.
+ */
+[style*="opacity: 0"][style*="transform"] {
+  opacity: 1 !important;
+  transform: none !important;
+}
