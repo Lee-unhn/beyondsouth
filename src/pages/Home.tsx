@@ -54,7 +54,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const target = new Date('2026-06-15T09:00:00+08:00').getTime();
+    const target = new Date('2026-05-28T09:00:00+08:00').getTime();
     const interval = setInterval(() => {
       const now = new Date().getTime();
       const diff = target - now;
@@ -208,7 +208,7 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-4 flex items-center justify-center gap-4 font-mono text-[9px] text-white/20 tracking-widest before:content-[''] before:w-4 before:h-px before:bg-white/10">
-            2026 · 06 · 15
+            2026 · 05 · 28
           </div>
         </motion.div>
 
@@ -245,7 +245,7 @@ export default function Home() {
             { num: '300', label: '名額有限', sub: '企業主 · 創辦人 · 主管' },
             { num: '6', label: '主題演講', sub: '45 min + Q&A 實戰分享' },
             { num: '1', label: '全日制年會', sub: '09:00 — 18:00' },
-            { num: '台南市', label: '歸仁資安大樓', sub: '2026 · 06 · 15', isSmall: true }
+            { num: '台南市', label: '歸仁資安大樓', sub: '2026 · 05 · 28', isSmall: true }
           ].map((item, i) => (
             <div key={i} className="py-8 text-center border-r border-white/5 last:border-r-0 hover:bg-white/[0.02] transition-colors">
               <div className={cn("font-mono font-bold text-teal leading-none mb-2", item.isSmall ? "text-lg md:text-2xl" : "text-3xl md:text-4xl")}>{item.num}</div>
@@ -482,7 +482,7 @@ export default function Home() {
           <h2 className="font-bold text-3xl md:text-5xl leading-[1.35] mb-4">南部第一場<span className="text-teal">企業成長年會</span></h2>
           <p className="text-sm text-gray-muted leading-relaxed mb-5">把「企業轉型」與「品牌成長」的關鍵知識，搬運到南部這塊土地上。為什麼是南部，為什麼是現在——了解這場年會背後的產業邏輯。</p>
           <div className="flex gap-2 flex-wrap justify-center mb-11">
-            {['2026 · 06 · 15', '台南市 歸仁資安大樓', '限額 300 人'].map((p, i) => (
+            {['2026 · 05 · 28', '台南市 歸仁資安大樓', '限額 300 人'].map((p, i) => (
               <div key={i} className="font-mono text-[10px] text-teal border border-teal/20 px-3.5 py-1.5 bg-teal/5 tracking-wider">{p}</div>
             ))}
           </div>
@@ -498,7 +498,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-6 px-6 md:px-12 lg:px-20 border-t border-white/5 flex flex-wrap justify-between items-center gap-3 relative z-10">
         <div className="font-display font-bold text-sm text-gray-muted">Beyond South <span className="text-teal">｜ 南向無界 2026</span></div>
-        <div className="font-mono text-[9px] text-white/10 tracking-wider">台南市 歸仁資安大樓 · 2026.06.15 · Beyond South Organizing Committee</div>
+        <div className="font-mono text-[9px] text-white/10 tracking-wider">台南市 歸仁資安大樓 · 2026.05.28 · Beyond South Organizing Committee</div>
       </footer>
     </div>
   );

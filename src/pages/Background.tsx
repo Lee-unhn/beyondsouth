@@ -163,7 +163,7 @@ export default function Background() {
 
       <footer className="py-6 px-6 md:px-12 lg:px-20 border-t border-white/5 flex flex-wrap justify-between items-center gap-3 relative z-10">
         <div className="font-display font-bold text-sm text-gray-muted">Beyond South <span className="text-teal">｜ 南向無界 2026</span></div>
-        <div className="font-mono text-[9px] text-white/10 tracking-wider">台南市 歸仁資安大樓 · 2026.06.15 · Beyond South Organizing Committee</div>
+        <div className="font-mono text-[9px] text-white/10 tracking-wider">台南市 歸仁資安大樓 · 2026.05.28 · Beyond South Organizing Committee</div>
       </footer>
     </div>
   );
