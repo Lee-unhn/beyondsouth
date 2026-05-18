@@ -392,17 +392,17 @@ export default function Home() {
             {[
               { t: '09:00', type: '報到', title: '開放報到、茶敘交流', style: 'adm' },
               { t: '10:00', type: '開幕', title: '開幕致詞 ／ 年會定位說明', style: 'adm' },
-              { t: '10:10', type: '主題演講', title: 'Session 1｜產業轉型實戰：從 0 到 1 的數位化路徑', style: 'talk' },
-              { t: '11:10', type: '主題演講', title: 'Session 2｜全通路零售佈局：打破線上線下的疆界', style: 'talk' },
+              { t: '10:10', type: '主題演講', title: 'Session 1｜產業轉型實戰：從 0 到 1 的數位化路徑', style: 'talk', speaker: '李庭毅', role: '生活市集行銷長' },
+              { t: '11:10', type: '主題演講', title: 'Session 2｜全通路零售佈局：打破線上線下的疆界', style: 'talk', speaker: '陳盛沺', role: '聲寶股份有限公司總裁' },
               { t: '12:10', type: '休息', title: '午餐休息（90 分鐘）', style: 'brk' },
-              { t: '13:40', type: '主題演講', title: 'Session 3｜品牌國際化策略：台灣品牌如何走向東南亞', style: 'talk' },
-              { t: '14:40', type: '主題演講', title: 'Session 4｜CRM 驅動增長：高價值顧客的留存藝術', style: 'talk' },
+              { t: '13:40', type: '主題演講', title: 'Session 3｜品牌國際化策略：台灣品牌如何走向東南亞', style: 'talk', speaker: '李順來', role: '台灣海德沃福 董事兼人財開發部課長' },
+              { t: '14:40', type: '主題演講', title: 'Session 4｜CRM 驅動增長：高價值顧客的留存藝術', style: 'talk', speaker: '許立元', role: 'TheHex 數據總監' },
               { t: '15:30', type: '休息', title: '中場休息、茶點（15 分鐘）', style: 'brk' },
-              { t: '15:45', type: '主題演講', title: 'Session 5｜企業 AI 發展方向：生成式 AI 的落地應用', style: 'talk' },
+              { t: '15:45', type: '主題演講', title: 'Session 5｜企業 AI 發展方向：生成式 AI 的落地應用', style: 'talk', speaker: '王韋仁', role: 'Asgard 創辦人兼 CEO' },
               { t: '16:45', type: '主題演講', title: 'Session 6｜南部產業機會 × 挑戰：下一個十年的增長點', style: 'talk' },
               { t: '17:00', type: '交流', title: '散場 ／ 現場自由交流開始', style: 'net' },
               { t: '18:00', type: '交流', title: '活動圓滿落幕', style: 'net' }
-            ].map((row, i) => (
+            ].map((row: { t: string; type: string; title: string; style: string; speaker?: string; role?: string }, i) => (
               <div key={i} className={cn(
                 "flex items-stretch bg-card border-l-[3px] transition-all hover:bg-white/[0.025]",
                 row.style === 'talk' ? "border-purple" : row.style === 'net' ? "border-teal" : "border-white/10"
@@ -438,6 +438,18 @@ export default function Home() {
                   }}>
                     {row.title}
                   </div>
+                  {row.speaker && (
+                    <div style={{
+                      fontSize: '12px',
+                      fontWeight: '500',
+                      color: 'rgba(255,255,255,0.62)',
+                      lineHeight: '1.4'
+                    }}>
+                      <span style={{ color: '#00C9B1' }}>{row.speaker}</span>
+                      <span style={{ color: 'rgba(255,255,255,0.32)', margin: '0 8px' }}>·</span>
+                      <span>{row.role}</span>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
